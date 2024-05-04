@@ -6,5 +6,5 @@ This repository contains the code and resources for a facial recognition system.
 ![Screenshot 2024-04-09 054940](https://github.com/francis-njenga/Face-Recognition-Attendance-System/assets/81665629/24bbc593-dd20-4f74-836e-ce2e265a2d9c)
 ![Screenshot 2024-04-07 113344](https://github.com/francis-njenga/Face-Recognition-Attendance-System/assets/81665629/63f24603-a93b-4d7b-b362-4611018e4400)
 ![Screenshot 2024-04-07 113315](https://github.com/francis-njenga/Face-Recognition-Attendance-System/assets/81665629/90cff5f8-7af7-46ed-91fb-040bc7f2cde4)
-![Screenshot 2024-04-07 113238](https://github.com/francis-njenga/Face-Recognition-Attendance-System/assets/81665629/b8b85545-b6e1-47ed-8795-cb72d938b8f1)
+
 
