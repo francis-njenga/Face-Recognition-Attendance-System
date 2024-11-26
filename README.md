@@ -131,6 +131,6 @@ For any issues or inquiries, feel free to reach out via email: [Francis Njenga](
 
 ### Visit My Website
 
-[![Website Logo](https://www.frankcodes.tech/favicon/favicon-org.ico)](frankcodes.tech)
+[![Website Logo](https://www.frankcodes.tech/favicon/favicon.ico)](frankcodes.tech) : frankcodes.tech
 
-You can send donations to my PayPal account: [![PayPal](https://www.paypalobjects.com/webstatic/icon/pp258.png)] rajeynjenga@gmail.com
+You can send donations to my PayPal account: rajeynjenga@gmail.com
