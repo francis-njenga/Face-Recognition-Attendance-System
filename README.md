@@ -77,9 +77,9 @@ Use a simple folder name, as it will be part of the URL (e.g., attendance-system
 
   - Recommended name: `attendance_db` (You can choose any name, but ensure it matches the configuration in your project files).
 
- - Import the SQL file:
-  - Locate the `attendance-db.sql` file in the `database/` folder of the project.
-  - Import it into the newly created database.
+- Import the SQL file:
+- Locate the `attendance-db.sql` file in the `database/` folder of the project.
+- Import it into the newly created database.
 
 ### **5. Launch the Application**
 
@@ -131,6 +131,6 @@ For any issues or inquiries, feel free to reach out via email: [Francis Njenga](
 
 ### Visit My Website
 
-[![Website Logo](https://www.frankcodes.tech/favicon/favicon.ico)](frankcodes.tech) : frankcodes.tech
+https://www.frankcodes.tech
 
 You can send donations to my PayPal account: rajeynjenga@gmail.com
