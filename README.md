@@ -10,7 +10,7 @@ A robust system designed to authenticate individuals and record attendance using
 - Manage courses, units, venues, and attendance records through an intuitive interface.
 - Capture and store multiple images for accurate identification.
 
----Good for college project
+- Good for college project
 
 ## Project Structure
 
