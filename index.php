@@ -1,130 +1,45 @@
-<?php 
-include 'Includes/dbcon.php';
-session_start();
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link href="admin/img/logo/attnlg.png" rel="icon">
-    <title>AMS Login</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="css/loginStyle.css">
-   
-</head>
-<div class="container" id="signin">
-    <h1>LOGIN</h1>
-    <div id="messageDiv" class="messageDiv" style="display:none;"></div>
-
-    <form method="post" action="">
-         <select required name="userType">
-            <option value="">--Select User Roles--</option>
-            <option value="Administrator">Administrator</option>
-            <option value="Lecture">Lecture</option>
-      </select>
-        <input type="email" name="email"placeholder="example@gmail.com">
-        <input type="password"name="password" placeholder="password">
-        <p class="recover">
-            <a href="#">Recover Password</a>
-        </p>
-        <input type="submit" class="btn-login" value="Login" name="login" />
-    </form>
-     <p class="or">
-        --------or--------
-     </p>
-     <div class="icons">
-        <i class="fab fa-google"></i>
-        <i class="fab fa-facebook"></i>
-     </div>
-   </div> 
-   <script>
-  function showMessage(message) {
-  var messageDiv = document.getElementById('messageDiv');
-  messageDiv.style.display="block";
-  messageDiv.innerHTML = message;
-  messageDiv.style.opacity = 1;
-  setTimeout(function() {
-    messageDiv.style.opacity = 0;
-  }, 5000);
-}
-
-
-
-   </script> 
 <?php
-  if(isset($_POST['login'])){
+require_once __DIR__ . "/database/database_connection.php";
+require_once __DIR__ . "/resources/lib/php_functions.php";
 
-    $userType = $_POST['userType'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $password = md5($password);
+//we get the request url and store it in a variable $request_site
+$request_site = isset($_GET['request_site']) ? $_GET['request_site'] : 'home';
 
-if($userType == "Administrator"){
-    
-      $query = "SELECT * FROM tbladmin WHERE emailAddress = '$email' and password='$password'  ";
-      $rs = $conn->query($query);
-      $num = $rs->num_rows;
-      $rows = $rs->fetch_assoc();
+session_start();
 
-      if($num > 0){
 
-        $_SESSION['userId'] = $rows['Id'];
-        $_SESSION['firstName'] = $rows['firstName'];
-        $_SESSION['emailAddress'] = $rows['emailAddress'];
-
-        echo "<script type = \"text/javascript\">
-        window.location = (\"Admin/index.php\")
-        </script>";
-      }
-
-      else{
-
-        $message = " Invalid Username/Password!";
-        echo "<script>showMessage('" . $message . "');</script>";
-
-      }
-    }
-    else if($userType == "Lecture"){
-
-      $query = "SELECT * FROM tbllecture WHERE emailAddress = '$email' and password='$password' "; 
-       
-      $rs = $conn->query($query);
-      $num = $rs->num_rows;
-      $rows = $rs->fetch_assoc();
-
-      if($num > 0){
-
-        $_SESSION['userId'] = $rows['Id'];
-       
-        echo "<script type = \"text/javascript\">
-        window.location = (\"lecture/takeAttendance.php\")
-        </script>";
-       
-     
-      
-      }
-
-      else{
-
-        $message = " Invalid Username/Password!";
-        echo "<script>showMessage('" . $message . "');</script>";
-
-      }
-    }
-    else{
-
-    
-    
-
-    }
+if ($request_site === "logout") {
+  session_destroy();
+  header("Location: login");
+  exit();
 }
-?>
 
-                                  
-</body>
 
-</html>
+$logged_in = user();
+//displaying login page
+if (!$logged_in) {
+    $request_site = "login";
+}
+
+$path = __DIR__ . "/resources/pages/";
+//path to pages 
+if ($logged_in) {
+  //we check the role of logged in user and construct link to either administrator or lecture folder
+  $page_path = $path . "$logged_in->role/$request_site.php";
+} else {
+  $page_path =  $path . "$request_site.php";
+}
+
+// echo $page_path;
+if (file_exists($page_path)) {
+  require $page_path;
+} else {
+  require "{$path}404.php";
+}
+
+
+
+// unsetting the errors after they have been displayed
+if (isset($_SESSION['errors'])) {
+  unset($_SESSION['errors']);
+}
