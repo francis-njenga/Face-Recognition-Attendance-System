@@ -149,7 +149,8 @@ if (isset($_POST['addStudent'])) {
                             <input type="text" name="firstName" placeholder="First Name">
                             <input type="text" name="lastName" " placeholder=" Last Name">
                             <input type="email" name="email" placeholder="Email Address">
-                            <input type="text" required name="registrationNumber" placeholder="Registration Number">
+                            <input type="text" required id="registrationNumber" name="registrationNumber" placeholder="Registration Number"> <br>
+                            <p id="error" style="color: red; display: none;">Invalid characters in registration number.</p> 
                             <select required name="faculty">
                                 <option value="" selected>Select Faculty</option>
                                 <?php
@@ -200,7 +201,27 @@ if (isset($_POST['addStudent'])) {
 
     <?php js_asset(["admin_functions", "delete_request", "script", "active_link"]) ?>
 
+    <script>
+        const registrationNumberInput = document.getElementById('registrationNumber');
+        const errorMessage = document.getElementById('error');
 
+        const invalidCharacters = /[\\/:*?"<>|]/g;
+
+        registrationNumberInput.addEventListener('input', () => {
+            const originalValue = registrationNumberInput.value;
+
+            const sanitizedValue = originalValue.replace(invalidCharacters, '');
+
+            if (originalValue !== sanitizedValue) {
+                errorMessage.style.display = 'inline';
+                errorMessage.textContent = 'Invalid characters removed.';
+            } else {
+                errorMessage.style.display = 'none';
+            }
+
+            registrationNumberInput.value = sanitizedValue; 
+        });
+    </script>
 </body>
 
 </html>
