@@ -32,8 +32,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
     $stmt->execute(['email' => $email]);
     $user = $stmt->fetch();
 
-
+  
     if ($user && password_verify($password, $user['password'])) {
+
         $_SESSION['user'] = [
             'id' => $user['Id'],
             'email' => $user['emailAddress'],

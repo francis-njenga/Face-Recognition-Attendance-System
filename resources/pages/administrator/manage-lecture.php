@@ -8,7 +8,9 @@ if (isset($_POST["addLecture"])) {
     $phoneNumber = htmlspecialchars(trim($_POST["phoneNumber"]));
     $faculty = htmlspecialchars(trim($_POST["faculty"]));
     $dateRegistered = date("Y-m-d");
-    $password = password_hash("password", PASSWORD_DEFAULT); // Secure password hashing
+    $password = $_POST['password'];
+
+    $hashedPassword = password_hash($password, PASSWORD_BCRYPT); // Secure password hashing
 
     if ($email && $firstName && $lastName && $phoneNumber && $faculty) {
         try {
@@ -27,7 +29,7 @@ if (isset($_POST["addLecture"])) {
                 $query->bindParam(':firstName', $firstName);
                 $query->bindParam(':lastName', $lastName);
                 $query->bindParam(':email', $email);
-                $query->bindParam(':password', $password);
+                $query->bindParam(':password', $hashedPassword);
                 $query->bindParam(':phoneNumber', $phoneNumber);
                 $query->bindParam(':faculty', $faculty);
                 $query->bindParam(':dateCreated', $dateRegistered);
