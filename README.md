@@ -109,6 +109,7 @@ Once logged in, you can:
 ### 2. Login as Lecturer
 
 - Create a lecturer account via the admin panel or use a pre-existing one.
+-**Select lecture user type, to be able to login as lecture** *if you have issues using this email and password, create your lecture on admin panel*
 
 - **Email**: `mark@gmail.com`
 - **Password**: `@mark_`
