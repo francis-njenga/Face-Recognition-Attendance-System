@@ -2,8 +2,8 @@
 
 A robust system designed to authenticate individuals and record attendance using **facial recognition technology** powered by deep learning. This project simplifies attendance tracking for classrooms, workplaces, or events.
 
-
-**Get the Enhanced Version**
+---
+## **Get the Enhanced Version**
 
 I’ve improved this project by adding new features and enhancements.  
 If you want access to the updated version along with my support to set it up, it's available for **$25**.  
