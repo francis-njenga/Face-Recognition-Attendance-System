@@ -58,6 +58,15 @@ CREATE TABLE `tblattendance` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
+CREATE TABLE attendance (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT,
+  date DATE,
+  time_in DATETIME,
+  time_out DATETIME
+);
+
+ALTER TABLE attendance ADD UNIQUE (user_id, date);
 
 --
 -- Table structure for table `tblcourse`
